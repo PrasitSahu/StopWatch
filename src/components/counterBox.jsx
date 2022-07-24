@@ -31,7 +31,7 @@ class CountBox extends Component {
             style={this.state.inputStyles}
             value={this.props.value}
             disabled
-            name={this.props.id}
+            id={this.props.id}
           />
           <label htmlFor={this.props.id} style={{ fontSize: "1rem" }}>
             {this.props.id}

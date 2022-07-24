@@ -14,7 +14,7 @@ class Counter extends Component {
     ],
     counterContainer: {
       backgroundColor: "#282c34",
-      minHeight: "100vh",
+      minHeight: "calc(100vh - 60px)",
       display: "flex",
       gap: 50,
       flexDirection: "column",
@@ -129,7 +129,7 @@ class Counter extends Component {
             fontAwesomeIcon={this.state.timerState ? "pause" : "play"}
           ></Btn>
           <Btn
-            className="btn btn-secondary"
+            className="btn btn-secondary reset-btn"
             onClick={this.haldleReset}
             text="Reset"
             fontAwesomeIcon="rotate-right"

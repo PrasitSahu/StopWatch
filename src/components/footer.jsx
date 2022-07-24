@@ -7,7 +7,7 @@ class Footer extends Component {
       position: "fixed",
       bottom: 0,
       height: 60,
-      backgroundColor: "transparent",
+      backgroundColor: "#242830",
     },
   };
   render() {
@@ -17,13 +17,20 @@ class Footer extends Component {
         style={this.state.footer}
       >
         <div className="container">
-          <span className="text-muted">
-            Made with <FontAwesomeIcon name="heart" /> by{" "}
+          <span style={{ color: "#aab2b9" }}>
+            Made with <FontAwesomeIcon name="heart" style={{ fontSize: 12 }} />{" "}
+            by{"  "}
             <a
               href="http://github.com/PrasitSahu"
               target="_blank"
               rel="noreferrer"
-              style={{ color: "#6C757D" }}
+              style={{
+                color: "#aab2b9",
+                textDecoration: "none",
+                borderBottom: "1px solid #aab2b9",
+                fontSize: 14,
+                fontWeight: "bold",
+              }}
             >
               Prasit
             </a>
