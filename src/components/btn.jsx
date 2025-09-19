@@ -1,27 +1,62 @@
-import React, { Component } from "react";
-import FontAwesomeIcon from "react-fontawesome";
+import React from "react";
+import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-class Btn extends Component {
-  state = {};
+const Btn = ({
+  text,
+  onClick,
+  className = "",
+  icon,
+  width = 120,
+  height = "auto",
+  style = {},
+  iconPosition = "left",
+}) => {
+  const renderIcon = () =>
+    icon ? <FontAwesomeIcon icon={icon} style={{ marginRight: 10 }} /> : null;
 
-  render() {
-    return (
-      <button
-        className={this.props.className}
-        style={{
-          width: 120,
-          height: "auto",
-        }}
-        onClick={this.props.onClick}
-      >
-        <FontAwesomeIcon
-          name={this.props.fontAwesomeIcon}
-          style={{ marginRight: 10 }}
-        />
-        {this.props.text}
-      </button>
-    );
-  }
-}
+  return (
+    <button
+      className={className}
+      style={{
+        width,
+        height,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+        ...style,
+      }}
+      onClick={onClick}
+    >
+      {icon && iconPosition === "left" && renderIcon()}
+      {text}
+      {icon && iconPosition === "right" && (
+        <FontAwesomeIcon icon={icon} style={{ marginLeft: 10 }} />
+      )}
+    </button>
+  );
+};
+
+Btn.propTypes = {
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  style: PropTypes.object,
+  iconPosition: PropTypes.oneOf(["left", "right"]),
+};
+
+Btn.defaultProps = {
+  onClick: () => {},
+  className: "",
+  icon: null,
+  width: 120,
+  height: "auto",
+  style: {},
+  iconPosition: "left",
+};
 
 export default Btn;
